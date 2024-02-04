@@ -43,9 +43,11 @@ int _printf(const char *format, ...)
 			i++;
 		}
 		else
+		{
 			handl_buf(buffer, format[i], ibuf), len++;
 			for (ibuf = len; ibuf > MB; ibuf -= MB)
 				;
+		}
 	}	print_buf(buffer, ibuf), free(buffer), va_end(arguments);
 	return (len);
 }
