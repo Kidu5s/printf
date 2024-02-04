@@ -25,8 +25,6 @@ int print_unt(va_list arguments, char *buf, unsigned int ibuf)
         return (i);
 }
 
-#include "main.h"
-
 /**
  * print_upx - prints a decimal in hexadecimal
  * @arguments: The character to print
@@ -69,8 +67,6 @@ int print_upx(va_list arguments, char *buf, unsigned int ibuf)
         free(hexadecimal);
         return (count);
 }
-
-#include "main.h"
 
 /**
  * print_usr - prints a string and values of

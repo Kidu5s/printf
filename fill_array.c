@@ -1,5 +1,4 @@
 #include "main.h"
-
 /********************************NO. 1.****************************************/
 /******************************************************************************/
 /**
@@ -12,34 +11,32 @@
  */
 char *fill_binary_array(char *binary, long int int_in, int isneg, int limit)
 {
-        int i;
-
-        for (i = 0; i < limit; i++)
-                binary[i] = '0';
-        binary[limit] = '\0';
-        for (i = limit - 1; int_in > 1; i--)
-        {
-                if (int_in == 2)
-                        binary[i] = '0';
-                else
-                        binary[i] = (int_in % 2) + '0';
-                int_in /= 2;
-        }
-        if (int_in != 0)
-                binary[i] = '1';
-        if (isneg)
-        {
-                for (i = 0; binary[i]; i++)
-                        if (binary[i] == '0')
-                                binary[i] = '1';
-                        else
-                                binary[i] = '0';
-        }
-        return (binary);
+	int i;
+	for (i = 0; i < limit; i++)
+		binary[i] = '0';
+	binary[limit] = '\0';
+	for (i = limit - 1; int_in > 1; i--)
+	{
+		if (int_in == 2)
+			binary[i] = '0';
+		else
+			binary[i] = (int_in % 2) + '0';
+		int_in /= 2;
+	}
+	if (int_in != 0)
+		binary[i] = '1';
+	if (isneg)
+	{
+		for (i = 0; binary[i]; i++)
+			if (binary[i] == '0')
+				binary[i] = '1';
+			else
+				binary[i] = '0';
+	}
+	return (binary);
 }
 /********************************NO. 2.****************************************/
 /******************************************************************************/
-
 /**
  * fill_hex_array - writes the character c to stdout
  *
@@ -53,7 +50,6 @@ char *fill_binary_array(char *binary, long int int_in, int isneg, int limit)
 char *fill_hex_array(char *bnr, char *hex, int isupp, int limit)
 {
         int op, i, j, toletter;
-
         hex[limit] = '\0';
         if (isupp)
                 toletter = 55;
@@ -73,7 +69,6 @@ char *fill_hex_array(char *bnr, char *hex, int isupp, int limit)
 }
 /********************************NO. 3.****************************************/
 /******************************************************************************/
-
 /**
  * fill_long_oct_array - calculates a long octal number
  *
@@ -85,7 +80,6 @@ char *fill_hex_array(char *bnr, char *hex, int isupp, int limit)
 char *fill_long_oct_array(char *bnr, char *oct)
 {
         int op, i, j, ioct, limit;
-
         oct[22] = '\0';
         for (i = 63, ioct = 21; i >= 0; i--, ioct--)
         {
@@ -98,13 +92,13 @@ char *fill_long_oct_array(char *bnr, char *oct)
                 i++;
                 oct[ioct] = op + '0';
         }
-        return (oct);
+return (oct);
 }
 /********************************NO. 4.****************************************/
 /******************************************************************************/
-
 /**
  * fill_oct_array - writes the character c to stdout
+ *
  * @bnr: array where is stored the binary.
  * @oct: array where is stored the octal.
  *
@@ -113,7 +107,6 @@ char *fill_long_oct_array(char *bnr, char *oct)
 char *fill_oct_array(char *bnr, char *oct)
 {
         int op, i, j, ioct, limit;
-
         oct[11] = '\0';
         for (i = 31, ioct = 10; i >= 0; i--, ioct--)
         {
@@ -128,4 +121,29 @@ char *fill_oct_array(char *bnr, char *oct)
         }
         return (oct);
 }
-
+/********************************NO. 5.****************************************/
+/******************************************************************************/
+/**
+ * fill_short_oct_array - calculates a short octal number
+ * @bnr: array where is stored the binary.
+ * @oct: array where is stored the octal.
+ *
+ * Return: binary array.
+ */
+char *fill_short_oct_array(char *bnr, char *oct)
+{
+        int op, i, j, ioct, limit;
+        oct[6] = '\0';
+	for (i = 15, ioct = 5; i >= 0; i--, ioct--)
+        {
+                if (i > 0)
+                        limit = 4;
+                else
+                        limit = 1;
+                for (op = 0, j = 1; j <= limit; j *= 2, i--)
+                        op = ((bnr[i] - '0') * j) + op;
+                i++;
+                oct[ioct] = op + '0';
+        }
+        return (oct);
+}

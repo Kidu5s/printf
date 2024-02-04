@@ -16,8 +16,8 @@
  */
 typedef struct print
 {
-        char *type_arg;
-        int (*f)(va_list, char *, unsigned int);
+	char *type_arg;
+	int (*f)(va_list, char *, unsigned int);
 } print_t;
 
 int _printf(const char *format, ...);
@@ -43,7 +43,6 @@ int prinhint(va_list arguments, char *buf, unsigned int ibuf);
 int prinhunt(va_list arguments, char *buf, unsigned int ibuf);
 int prinhoct(va_list arguments, char *buf, unsigned int ibuf);
 int prinhhex(va_list arguments, char *buf, unsigned int ibuf);
-int prinhupx(va_list arguments, char *buf, unsigned int ibuf);
 int prinpint(va_list arguments, char *buf, unsigned int ibuf);
 int prinnoct(va_list arguments, char *buf, unsigned int ibuf);
 int prinnhex(va_list arguments, char *buf, unsigned int ibuf);

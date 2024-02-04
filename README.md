@@ -1,1 +1,1 @@
-#this is a readme for the first group project
+this is a project for a team
