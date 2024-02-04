@@ -1,15 +1,15 @@
 #include "main.h"
 
 /**
- * print_oct - prints decimal number in octal
+ * prinhoct - prints long decimal number in octal
  * @arguments: input number
  * @buf: buffer pointer
  * @ibuf: index for buffer pointer
  * Return: number of chars printed.
  */
-int print_oct(va_list arguments, char *buf, unsigned int ibuf)
+int prinhoct(va_list arguments, char *buf, unsigned int ibuf)
 {
-        int int_input, i, isnegative, count, first_digit;
+        short int int_input, i, isnegative, count, first_digit;
         char *octal, *binary;
 
         int_input = va_arg(arguments, int);
@@ -24,10 +24,11 @@ int print_oct(va_list arguments, char *buf, unsigned int ibuf)
                 int_input = (int_input * -1) - 1;
                 isnegative = 1;
         }
-        binary = malloc(sizeof(char) * (32 + 1));
-        binary = fill_binary_array(binary, int_input, isnegative, 32);
-        octal = malloc(sizeof(char) * (11 + 1));
-        octal = fill_oct_array(binary, octal);
+
+        binary = malloc(sizeof(char) * (16 + 1));
+        binary = fill_binary_array(binary, int_input, isnegative, 16);
+        octal = malloc(sizeof(char) * (6 + 1));
+        octal = fill_short_oct_array(binary, octal);
         for (first_digit = i = count = 0; octal[i]; i++)
         {
                 if (octal[i] != '0' && first_digit == 0)
@@ -42,3 +43,4 @@ int print_oct(va_list arguments, char *buf, unsigned int ibuf)
         free(octal);
         return (count);
 }
+
